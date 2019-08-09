@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 const raw = (touched, errors) => {
   return (
@@ -39,17 +40,14 @@ export default withFormik({
   }),
 
   handleSubmit(vals, { resetForm, setSubmitting }) {
-    // axios
-    //   .post('', vals)
-    //   .then(res => {
-    //     vals.subFun(res.data);
-    //     resetForm();
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //     setSubmitting(false);
-    //   });
+    axios
+      .post('http://localhost:5000/api/register', vals)
+      .then(resetForm)
+      .catch(err => {
+        console.log(err);
+        setSubmitting(false);
+        vals.subFun();
+      });
     alert('form submitted');
-    vals.subFun({name: vals.name, password: vals.password});
   }
 })(raw);

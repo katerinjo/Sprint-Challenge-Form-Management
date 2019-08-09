@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import axios from 'axios';
 
 import Form from './components/Form';
 import UserList from './components/UserList';
 
 function App() {
-  const [users, setUsers] = useState([{name: 'test1'}, {name: 'test2'}]);
+  const [pending, setPending] = useState(false);
+  const [users, setUsers] = useState([]);
 
-  function addUser(user) {
-    setUsers([...users, user]);
-  }
+  useEffect(() => {
+    if (pending) {
+      setUsers([{name: 'test'}]);
+      setPending(false);
+    }
+  }, [pending]);
 
   return (
     <div className="App">
       <UserList users={users} />
-      <Form subFun={addUser} />
+      <Form subFun={() => setPending(true)} />
     </div>
   );
 }
