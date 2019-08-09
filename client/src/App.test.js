@@ -1,17 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import * as rtl from '@testing-library/react';
+// import 'jest-dom/extend-expect';
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+afterEach(rtl.cleanup);
 
-it('renders submit button', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  const button = div.queryByText(/submit/i);
-  expect(button).toBeTruthy();
-  ReactDOM.unmountComponentAtNode(div);
+it('submit button displayed', () => {
+  const wrapper = rtl.render(<App />);
+  expect(wrapper.getByText(/submit/i));
 });
