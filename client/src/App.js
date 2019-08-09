@@ -25,7 +25,7 @@ function App() {
   return (
     <div className="App">
       <FoodList />
-      <Form />
+      <Form subFun={console.log} />
     </div>
   );
 }
