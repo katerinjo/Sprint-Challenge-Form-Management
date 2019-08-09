@@ -35,7 +35,7 @@ export default withFormik({
     password: Yup
       .string()
       .min(5, "password needs at least 5 characters")
-      .required("name can't be empty")
+      .required("password can't be empty")
   }),
 
   handleSubmit(vals, { resetForm, setSubmitting }) {
