@@ -34,7 +34,7 @@ class FoodList extends React.Component {
         <ul>
           {
             this.state.foods ?
-              this.state.foods.map(food => <li>{food.name}</li>) :
+              this.state.foods.map((food, ix) => <li id={ix} key={ix}>{food.name}</li>) :
               <p>no foods yet</p>
           }
         </ul>
