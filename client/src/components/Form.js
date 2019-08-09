@@ -50,5 +50,6 @@ export default withFormik({
     //     setSubmitting(false);
     //   });
     alert('form submitted');
+    vals.subFun({name: vals.name, password: vals.password});
   }
 })(raw);

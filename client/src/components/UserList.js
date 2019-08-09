@@ -9,7 +9,7 @@ class UserList extends React.Component {
   render () {
     return (
       <ul>
-        {this.users.map(user => <li>{user.name}</li>)}
+        {this.state.map(user => <li>{user.name}</li>)}
       </ul>
     );
   }
