@@ -31,12 +31,11 @@ export default withFormik({
   validationSchema: Yup.object().shape({
     name: Yup
       .string()
-      .min(1, "name can't be empty")
-      .required(),
+      .required("name can't be empty"),
     password: Yup
       .string()
       .min(5, "password needs at least 5 characters")
-      .required()
+      .required("name can't be empty")
   }),
 
   handleSubmit(vals, { resetForm, setSubmitting }) {
