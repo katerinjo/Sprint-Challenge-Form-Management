@@ -11,7 +11,13 @@ function App() {
 
   useEffect(() => {
     if (pending) {
-      setUsers([{name: 'test'}]);
+      axios
+        .get('http://localhost:5000/api/restricted/data')
+        .then(res => {
+          console.log(res)
+          setUsers(res.data);
+        })
+        .catch(console.log);
       setPending(false);
     }
   }, [pending]);

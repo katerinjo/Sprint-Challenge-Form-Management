@@ -41,13 +41,18 @@ export default withFormik({
 
   handleSubmit(vals, { resetForm, setSubmitting }) {
     axios
-      .post('http://localhost:5000/api/register', vals)
-      .then(resetForm)
-      .catch(err => {
-        console.log(err);
+      .post('http://localhost:5000/api/register', {
+        username: vals.name,
+        password: vals.password
+      })
+      .then(res => {
+        console.log(res);
+        resetForm();
         setSubmitting(false);
         vals.subFun();
+      })
+      .catch(err => {
+        console.log('forms axios post', err);
       });
-    alert('form submitted');
   }
 })(raw);
