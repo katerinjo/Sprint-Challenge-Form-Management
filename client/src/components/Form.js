@@ -48,7 +48,7 @@ export default withFormik({
         console.log(res);
         resetForm();
         setSubmitting(false);
-        vals.subFun();
+        // vals.subFun();
       })
       .catch(err => {
         console.log('forms axios post', err);
