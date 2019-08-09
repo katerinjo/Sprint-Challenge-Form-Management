@@ -3,7 +3,7 @@ import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-const raw = (touched, errors) => {
+const raw = ({touched, errors}) => {
   return (
     <Form>
       <div>
